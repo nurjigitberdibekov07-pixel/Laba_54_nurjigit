@@ -1,4 +1,3 @@
-from django.contrib.gis.admin import options
 from django.db import models
 
 # Create your models here.
