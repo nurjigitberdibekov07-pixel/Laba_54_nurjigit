@@ -32,8 +32,8 @@ def add_product(request):
         if not name or not price or not image or not category:
             return render(request,"my_shop_forms/product_add.html", context={"error": "Please enter a title, price, image"})
         category_obj = Categories.objects.get(pk=category)
-        Products.objects.create(name=name, price=price, image=image, category=category_obj, description=description)
-        return redirect("products")
+        product = Products.objects.create(name=name, price=price, image=image, category=category_obj, description=description)
+        return redirect("product_detail", pk=product.pk)
 
 def delete_product(request, pk):
     product = Products.objects.get(pk=pk)
