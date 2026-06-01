@@ -45,3 +45,9 @@ def add_category(request):
             return render(request, "my_shop_forms/category_add.html", {"error": "Please enter a name"})
         Categories.objects.create(name=name, description=request.POST.get("description", "").strip())
         return redirect("add_category")
+
+def delete_category(request, pk):
+    category = Categories.objects.get(pk=pk)
+    Products.objects.filter(category=category).delete()
+    category.delete()
+    return redirect("categories_view")
