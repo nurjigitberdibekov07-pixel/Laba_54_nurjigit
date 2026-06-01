@@ -40,6 +40,24 @@ def delete_product(request, pk):
     product.delete()
     return redirect("products")
 
+def edit_product(request, pk):
+    product = Products.objects.get(pk=pk)
+    if request.method == "GET":
+        categories = Categories.objects.all()
+        return render(request, "my_shop_forms/product_edit.html", {'product': product, 'categories': categories})
+    elif request.method == "POST":
+        product.name = request.POST.get("name", "").strip()
+        product.price = request.POST.get("price", "").strip()
+        product.image = request.POST.get("image", "").strip()
+        product.description = request.POST.get("description", "").strip()
+        category_pk = request.POST.get("category", "").strip()
+        product.category = Categories.objects.get(pk=category_pk)
+        if not product.name or not product.price or not product.image or not category_pk:
+            return render(request, "my_shop_forms/product_edit.html",
+                          context={"error": "Please enter a title, price, image", "product": product})
+        product.save()
+        return redirect("products")
+
 
 def add_category(request):
     if request.method == "GET":
