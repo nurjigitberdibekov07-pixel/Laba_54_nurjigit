@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block nav %}
     <a class="nav-link" href="/categories/add">Add category</a>
+    <a class="nav-link" href="/products/add">Add product</a>
 {% endblock %}
 
 {% block content %}
@@ -9,27 +10,25 @@
         <h1>My market</h1>
     </div>
 
-    <div class="card" style="width: 18rem;">
-        {% for product in products %}
-
-              <img src="{{ product.image }}" class="card-img-top" alt="image">
-              <div class="card-body">
+<div class="d-flex flex-wrap gap-3">
+    {% for product in products %}
+        <div class="card" style="width: 18rem;">
+            <img src="{{ product.image }}" class="card-img-top" alt="image" style="height: 200px; object-fit: cover;">
+            <div class="card-body">
                 <h5 class="card-title">{% if product.name %}{{ product.name }}{% else %}---{% endif %}</h5>
                 <p class="card-text">{% if product.category %}{{ product.category }}{% else %}---{% endif %}</p>
-              </div>
-              <ul class="list-group list-group-flush">
+            </div>
+            <ul class="list-group list-group-flush">
                 <li class="list-group-item">Price: {{ product.price }}</li>
-              </ul>
-              <div class="card-body">
+            </ul>
+            <div class="card-body">
                 <a href="#" class="card-link">See more</a>
-              </div>
-
-
-        {% empty %}
-            <p>Нет данных</p>
-            <p> {{ categories }} </p>
-        {% endfor %}
-    </div>
+            </div>
+        </div>
+    {% empty %}
+        <p>Нет данных</p>
+    {% endfor %}
+</div>
 
 
 {% endblock %}
