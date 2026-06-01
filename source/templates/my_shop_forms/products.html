@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block nav %}
-    <a class="nav-link" href="/categories/add">Add category</a>
-    <a class="nav-link" href="/products/add">Add product</a>
+    <a class="nav-link" href="{% url 'add_category' %}">Add category</a>
+    <a class="nav-link" href="{% url 'add_product' %}">Add product</a>
 {% endblock %}
 
 {% block content %}
@@ -22,7 +22,7 @@
                 <li class="list-group-item">Price: {{ product.price }}</li>
             </ul>
             <div class="card-body">
-                <a href="#" class="card-link">See more</a>
+                <a href="{% url 'product_detail' product.pk %}" class="card-link">See more</a>
             </div>
         </div>
     {% empty %}
