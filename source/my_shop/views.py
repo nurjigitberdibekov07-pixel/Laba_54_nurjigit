@@ -35,6 +35,11 @@ def add_product(request):
         Products.objects.create(name=name, price=price, image=image, category=category_obj, description=description)
         return redirect("products")
 
+def delete_product(request, pk):
+    product = Products.objects.get(pk=pk)
+    product.delete()
+    return redirect("products")
+
 
 def add_category(request):
     if request.method == "GET":
