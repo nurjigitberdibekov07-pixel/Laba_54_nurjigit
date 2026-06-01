@@ -1,0 +1,42 @@
+[
+{
+    "model": "my_shop.categories",
+    "pk": 1,
+    "fields": {
+        "name": "Laptops",
+        "description": "Nice instrument"
+    }
+},
+{
+    "model": "my_shop.categories",
+    "pk": 2,
+    "fields": {
+        "name": "Phone",
+        "description": "Smartphones are essential all-in-one pocket computers that connect us to the world. They blend communication, entertainment, productivity, and professional-grade photography into a single sleek device."
+    }
+},
+{
+    "model": "my_shop.products",
+    "pk": 1,
+    "fields": {
+        "name": "MacBook Air",
+        "description": "One of the best laptops in the world",
+        "category": 1,
+        "created": "2026-06-01T08:22:52.434Z",
+        "price": "36000.00",
+        "image": "https://www.myphone.kg/files/media/27/27176.webp"
+    }
+},
+{
+    "model": "my_shop.products",
+    "pk": 2,
+    "fields": {
+        "name": "Poco x5 pro 5g",
+        "description": "",
+        "category": 2,
+        "created": "2026-06-01T08:26:08.631Z",
+        "price": "26000.00",
+        "image": "https://i02.appmifile.com/mi-com-product/fly-birds/poco-x5-pro-5g/pc/img11.jpg"
+    }
+}
+]
