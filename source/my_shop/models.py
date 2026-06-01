@@ -10,6 +10,10 @@ class Categories(models.Model):
     def __str__(self):
         return f"{self.pk} - {self.name}"
 
+    class Meta:
+        db_table = "Категории"
+        verbose_name = "категория"
+
 class Products(models.Model):
     name = models.CharField(max_length=100, null=False, blank=False, verbose_name="Название")
     description = models.TextField(max_length=3000, null=True, blank=True, verbose_name="Описание")
@@ -23,7 +27,7 @@ class Products(models.Model):
         return self.name
 
     class Meta:
-        db_table = "продукты"
-        verbose_name = "продукт"
+        db_table = "Продукты"
+        verbose_name = "Продукт"
 
 
