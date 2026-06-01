@@ -8,6 +8,11 @@ def products_view(request):
     context = {'products': products}
     return render(request, "my_shop_forms/products.html", context)
 
+def product_detail(request, pk):
+    product = Products.objects.get(pk=pk)
+    context = {'product': product}
+    return render(request, "my_shop_forms/detail_product.html", context)
+
 def add_product(request):
     if request.method == "GET":
         categories = Categories.objects.all()
