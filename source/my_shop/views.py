@@ -10,7 +10,20 @@ def products_view(request):
 
 def add_product(request):
     if request.method == "GET":
-        return render(request, "my_shop_form/product_view.html")
+        categories = Categories.objects.all()
+        context = { 'categories': categories}
+        return render(request, "my_shop_forms/product_add.html", context)
+    elif request.method == "POST":
+        name = request.POST.get("name", "").strip()
+        price = request.POST.get("price", "").strip()
+        image = request.POST.get("image", "").strip()
+        category = request.POST.get("category", "").strip()
+        description = request.POST.get("description", "").strip()
+        if not name or not price or not image or not category:
+            return render(request,"my_shop_forms/product_add.html", context={"error": "Please enter a title, price, image"})
+        category_obj = Categories.objects.get(pk=category)
+        Products.objects.create(name=name, price=price, image=image, category=category_obj, description=description)
+        return redirect("products")
 
 
 def add_category(request):
