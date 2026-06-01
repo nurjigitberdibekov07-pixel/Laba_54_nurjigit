@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block nav %}
-    <a class="nav-link" href="categories/add">Add category</a>
+    <a class="nav-link" href="/categories/add">Add category</a>
 {% endblock %}
 
 {% block content %}
@@ -27,6 +27,7 @@
 
         {% empty %}
             <p>Нет данных</p>
+            <p> {{ categories }} </p>
         {% endfor %}
     </div>
 
