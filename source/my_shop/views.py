@@ -82,6 +82,8 @@ def edit_category(request, pk):
         return render(request, "my_shop_forms/category_edit.html", context)
     elif request.method == "POST":
         name = request.POST.get("name", "").strip()
+        if not name:
+            return render(request, "my_shop_forms/category_edit.html", {"error": "Please enter a name"} )
         description = request.POST.get("description", "").strip()
         category.name = name
         category.description = description

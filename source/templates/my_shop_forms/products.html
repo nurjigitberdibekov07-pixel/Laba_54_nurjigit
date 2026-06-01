@@ -17,7 +17,7 @@
             <img src="{{ product.image }}" class="card-img-top" alt="image" style="height: 200px; object-fit: cover;">
             <div class="card-body">
                 <h5 class="card-title">{% if product.name %}{{ product.name }}{% else %}---{% endif %}</h5>
-                <p class="card-text">{% if product.category %}{{ product.category }}{% else %}---{% endif %}</p>
+                <p class="card-text">{% if product.category.name %}{{ product.category.name }}{% else %}---{% endif %}</p>
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">Price: {{ product.price }}</li>
