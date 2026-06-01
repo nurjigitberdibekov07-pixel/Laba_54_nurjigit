@@ -51,3 +51,16 @@ def delete_category(request, pk):
     Products.objects.filter(category=category).delete()
     category.delete()
     return redirect("categories_view")
+
+def edit_category(request, pk):
+    category = Categories.objects.get(pk=pk)
+    if request.method == "GET":
+        context = {'category': category}
+        return render(request, "my_shop_forms/category_edit.html", context)
+    elif request.method == "POST":
+        name = request.POST.get("name", "").strip()
+        description = request.POST.get("description", "").strip()
+        category.name = name
+        category.description = description
+        category.save()
+        return redirect("categories_view")
